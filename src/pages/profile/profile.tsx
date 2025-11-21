@@ -1,12 +1,11 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch, RootState, useSelector } from '../../services/store';
+import { AppDispatch, useSelector, useDispatch } from '../../services/store';
 import { updateUserThunk } from '../../services/slices/userSlice/userSlice';
 
 export const Profile: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { data: user } = useSelector((state: RootState) => state.user);
+  const { data: user } = useSelector((state) => state.user);
 
   const [formValue, setFormValue] = useState({
     name: user.name,

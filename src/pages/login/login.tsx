@@ -3,7 +3,7 @@ import { LoginUI } from '@ui-pages';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUserThunk } from '../../services/slices/userSlice/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
-import { AppDispatch, RootState } from '../../services/store';
+import { AppDispatch } from '../../services/store';
 
 export const Login: FC = () => {
   const location = useLocation();
@@ -14,7 +14,7 @@ export const Login: FC = () => {
   const [password, setPassword] = useState('');
 
   const { from } = location.state || { from: { pathname: '/' } };
-  const { error } = useSelector((state: RootState) => state.user);
+  const { error } = useSelector((state) => state.user);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();

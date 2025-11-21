@@ -2,8 +2,7 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { AppDispatch, RootState, useSelector } from '../../services/store';
-import { useDispatch } from 'react-redux';
+import { AppDispatch, useSelector, useDispatch } from '../../services/store';
 import { useParams } from 'react-router-dom';
 import { getOrderThunk } from '../../services/slices/orderSlice/orderSlice';
 import { getIngredientThunk } from '../../services/slices/ingredientsSlice/ingredientsSlice';
@@ -13,11 +12,11 @@ export const OrderInfo: FC = () => {
   const { number } = useParams();
 
   const { isLoading: isLoading, data: ingredients } = useSelector(
-    (state: RootState) => state.ingredients
+    (state) => state.ingredients
   );
 
   const { isOrderLoading, orderModal: orderData } = useSelector(
-    (state: RootState) => state.order
+    (state) => state.order
   );
 
   useEffect(() => {

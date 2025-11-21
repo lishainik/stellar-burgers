@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { RootState, useSelector } from '../../services/store';
+import { useSelector } from '../../services/store';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '@ui';
 
@@ -13,7 +13,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   children
 }) => {
   const location = useLocation();
-  const dataUser = useSelector((state: RootState) => state.user);
+  const dataUser = useSelector((state) => state.user);
 
   if (!dataUser.loginUserRequest) {
     return <Preloader />;

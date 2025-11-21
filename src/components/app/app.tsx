@@ -24,6 +24,7 @@ import { ProtectedRoute } from '../protected-route';
 import { getUserThunk } from '../../services/slices/userSlice/userSlice';
 import { useEffect } from 'react';
 import { AppDispatch, useDispatch } from '../../services/store';
+import { getIngredientThunk } from '../../services/slices/ingredientsSlice/ingredientsSlice';
 import { Preloader } from '@ui';
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
   const state = location.state;
   useEffect(() => {
     dispatch(getUserThunk());
+    dispatch(getIngredientThunk());
   }, []);
 
   return (
@@ -113,10 +115,7 @@ const App = () => {
                 </Modal>
               }
             />
-          </Routes>
-        )}
-        {state?.background && (
-          <Routes>
+
             <Route
               path='/feed/:number'
               element={
@@ -125,10 +124,7 @@ const App = () => {
                 </Modal>
               }
             />
-          </Routes>
-        )}
-        {state?.background && (
-          <Routes>
+
             <Route
               path='/profile/orders/:number'
               element={

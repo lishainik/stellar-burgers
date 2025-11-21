@@ -1,8 +1,7 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { AppDispatch, RootState, useSelector } from '../../services/store';
-import { useDispatch } from 'react-redux';
+import { AppDispatch, useSelector, useDispatch } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 import {
   createOrderThunk,
@@ -14,11 +13,9 @@ export const BurgerConstructor: FC = () => {
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  let constructorItems = useSelector(
-    (state: RootState) => state.burgerConstructor
-  );
+  let constructorItems = useSelector((state) => state.burgerConstructor);
 
-  const userData = useSelector((state: RootState) => state.user);
+  const userData = useSelector((state) => state.user);
 
   if (!constructorItems.bun) {
     constructorItems = {
@@ -39,7 +36,7 @@ export const BurgerConstructor: FC = () => {
     };
   }
 
-  const orderData = useSelector((state: RootState) => state.order);
+  const orderData = useSelector((state) => state.order);
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderData.orderRequest) return;
