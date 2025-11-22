@@ -23,13 +23,13 @@ import { AppHeader, Modal, OrderInfo, IngredientDetails } from '@components';
 import { ProtectedRoute } from '../protected-route';
 import { getUserThunk } from '../../services/slices/userSlice/userSlice';
 import { useEffect } from 'react';
-import { AppDispatch, useDispatch } from '../../services/store';
+import { useDispatch } from '../../services/store';
 import { getIngredientThunk } from '../../services/slices/ingredientsSlice/ingredientsSlice';
 import { Preloader } from '@ui';
 
 const App = () => {
   const navigate = useNavigate();
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleModalClose = () => navigate(-1);
   const location = useLocation();
   const state = location.state;
@@ -44,7 +44,19 @@ const App = () => {
         <AppHeader />
         <Routes location={state?.background || location}>
           <Route path='/' element={<ConstructorPage />} />
-          <Route path='/ingredients/:id' element={<IngredientDetails />} />
+          <Route
+            path='/ingredients/:id'
+            element={
+              <div className={styles.detailPageWrap}>
+                <p
+                  className={`text text_type_main-large ${styles.detailHeader}`}
+                >
+                  Детали ингредиента
+                </p>
+                <IngredientDetails />
+              </div>
+            }
+          />
           <Route path='/feed' element={<Feed />} />
           <Route path='/feed/:number' element={<OrderInfo />} />
           <Route

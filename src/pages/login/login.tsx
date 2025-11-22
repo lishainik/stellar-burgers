@@ -3,11 +3,10 @@ import { LoginUI } from '@ui-pages';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUserThunk } from '../../services/slices/userSlice/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
-import { AppDispatch } from '../../services/store';
 
 export const Login: FC = () => {
   const location = useLocation();
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');

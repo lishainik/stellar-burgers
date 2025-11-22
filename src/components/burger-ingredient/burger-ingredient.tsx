@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
-import { AppDispatch, useDispatch } from '../../services/store';
+import { useDispatch } from '../../services/store';
 import {
   addBun,
   addIngredient
@@ -12,7 +12,7 @@ import {
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
     const location = useLocation();
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const handleAdd = () => {
       ingredient.type === 'bun'

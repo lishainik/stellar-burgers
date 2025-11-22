@@ -4,13 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { OrderCardProps } from './type';
 import { TIngredient } from '@utils-types';
 import { OrderCardUI } from '../ui/order-card';
-import { AppDispatch, useSelector, useDispatch } from '../../services/store';
+import { useSelector } from '../../services/store';
 
 const maxIngredients = 6;
 
 export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
   const location = useLocation();
-  const dispatch: AppDispatch = useDispatch();
 
   const ingredientData = useSelector((state) => state.ingredients);
 

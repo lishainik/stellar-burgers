@@ -2,13 +2,12 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { AppDispatch, useSelector, useDispatch } from '../../services/store';
+import { useSelector, useDispatch } from '../../services/store';
 import { useParams } from 'react-router-dom';
 import { getOrderThunk } from '../../services/slices/orderSlice/orderSlice';
-import { getIngredientThunk } from '../../services/slices/ingredientsSlice/ingredientsSlice';
 
 export const OrderInfo: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
   const { number } = useParams();
 
   const { isLoading: isLoading, data: ingredients } = useSelector(
@@ -21,7 +20,6 @@ export const OrderInfo: FC = () => {
 
   useEffect(() => {
     dispatch(getOrderThunk(Number(number)));
-    dispatch(getIngredientThunk());
   }, [dispatch]);
 
   /* Готовим данные для отображения */

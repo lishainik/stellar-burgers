@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { AppDispatch, useSelector, useDispatch } from '../../services/store';
+import { useSelector, useDispatch } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 import {
   createOrderThunk,
@@ -10,8 +10,7 @@ import {
 import { resetConstructor } from '../../services/slices/constructorSlice/constructorSlice';
 
 export const BurgerConstructor: FC = () => {
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   let constructorItems = useSelector((state) => state.burgerConstructor);
 

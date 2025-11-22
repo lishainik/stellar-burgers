@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
-import { AppDispatch, useSelector, useDispatch } from '../../services/store';
+import { useSelector, useDispatch } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 import { registerUserThunk } from '../../services/slices/userSlice/userSlice';
 
@@ -9,7 +9,7 @@ export const Register: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: SyntheticEvent) => {
