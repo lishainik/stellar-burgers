@@ -13,7 +13,7 @@ type TFeedState = {
   data: TOrdersData;
 };
 
-const initialState: TFeedState = {
+export const initialState: TFeedState = {
   isLoading: true,
   error: null,
   data: {
