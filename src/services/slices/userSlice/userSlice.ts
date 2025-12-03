@@ -23,7 +23,7 @@ type TUserState = {
   error?: SerializedError;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuth: false,
   data: {
     name: '',
